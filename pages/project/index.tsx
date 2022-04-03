@@ -1,4 +1,4 @@
-import { Pagination } from "antd";
+import { Col, Row } from "antd";
 import { useEffect, useState } from "react";
 import ProjectTable from "../../components/tables/project.table";
 import Template from "../../components/template";
@@ -18,12 +18,14 @@ const Project = () => {
   }, []);
 
   return (
-    <Template>
-      <div>
-        {projects && (
-          <ProjectTable projects={projects} getProjects={getProjects} />
-        )}
-      </div>
+    <Template pageTitle="Project list">
+      <Row justify="center">
+        <Col span="8">
+          {projects && (
+            <ProjectTable projects={projects} getProjects={getProjects} />
+          )}
+        </Col>
+      </Row>
     </Template>
   );
 };

@@ -1,4 +1,4 @@
-import { Pagination, Table } from "antd";
+import { Pagination, Space, Table } from "antd";
 import React from "react";
 import { Project } from "../../interfaces/models/project.interface";
 import { ProjectPageData } from "../../interfaces/project-page-data.interface";
@@ -11,12 +11,13 @@ interface Props {
 const ProjectTable: React.FC<Props> = ({ projects, getProjects }) => {
   const columns = [{ title: "Name", dataIndex: "name", key: "name" }];
   return (
-    <div>
+    <Space direction="vertical" size="large" style={{ display: "flex" }}>
       <Table
         rowKey={"gid"}
         columns={columns}
         dataSource={projects.data}
         pagination={false}
+        bordered={true}
       />
       <Pagination
         current={projects.current_page}
@@ -24,7 +25,7 @@ const ProjectTable: React.FC<Props> = ({ projects, getProjects }) => {
         total={projects.total}
         onChange={(page, pageSize) => getProjects(page)}
       />
-    </div>
+    </Space>
   );
 };
 

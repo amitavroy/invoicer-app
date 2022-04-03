@@ -5,7 +5,7 @@ import Template from "../../components/template";
 const ProjectAdd = () => {
   useEffect(() => {}, []);
   return (
-    <Template>
+    <Template pageTitle="Add new Project">
       <ProjectAddForm />
     </Template>
   );
