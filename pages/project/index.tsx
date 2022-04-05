@@ -1,4 +1,5 @@
-import { Col, Row } from "antd";
+import { Button, Col, Row, Space } from "antd";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ProjectTable from "../../components/tables/project.table";
 import Template from "../../components/template";
@@ -19,13 +20,25 @@ const Project = () => {
 
   return (
     <Template pageTitle="Project list">
-      <Row justify="center">
-        <Col span="8">
-          {projects && (
-            <ProjectTable projects={projects} getProjects={getProjects} />
-          )}
-        </Col>
-      </Row>
+      <Space direction="vertical" size="middle" style={{ display: "flex" }}>
+        <Row justify="space-between">
+          <Col span="20"></Col>
+          <Col span="4" style={{ textAlign: "end" }}>
+            <Link href="project/add">
+              <Button type="default" htmlType="button" icon=" ">
+                Add project
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+        <Row justify="center">
+          <Col span="24">
+            {projects && (
+              <ProjectTable projects={projects} getProjects={getProjects} />
+            )}
+          </Col>
+        </Row>
+      </Space>
     </Template>
   );
 };

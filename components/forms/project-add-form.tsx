@@ -1,9 +1,14 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Space } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import ProjectService from "../../services/project.service";
 
 const ProjectAddForm: React.FC = () => {
+  const router = useRouter();
+
   const handleOnFinish = async (values: any) => {
     await ProjectService.saveProject(values.name);
+    router.push("/project");
   };
   const handleOnFinishFailed = (errorInfo: any) => {
     console.log("Error", errorInfo);
@@ -25,9 +30,16 @@ const ProjectAddForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Save
-        </Button>
+        <Space direction="horizontal" size="middle">
+          <Button type="primary" htmlType="submit" icon=" ">
+            Save
+          </Button>
+          <Link href="/project">
+            <Button type="primary" htmlType="submit" danger icon=" ">
+              Back
+            </Button>
+          </Link>
+        </Space>
       </Form.Item>
     </Form>
   );
