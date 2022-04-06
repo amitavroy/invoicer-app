@@ -1,22 +1,17 @@
-import { Button, Col, Row, Space } from "antd";
+import { Button, Col, Empty, Row, Space } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useSWR, { useSWRConfig } from "swr";
+
 import ProjectTable from "../../components/tables/project.table";
 import Template from "../../components/template";
-import { ProjectPageData } from "../../interfaces/project-page-data.interface";
-import ProjectService from "../../services/project.service";
+import UrlService from "../../services/ur.service";
 
 const Project = () => {
-  const [projects, setProjects] = useState<ProjectPageData>();
-
-  const getProjects = async (page) => {
-    const resp = await ProjectService.getProjects(page);
-    setProjects(resp.data.projects);
-  };
-
-  useEffect(() => {
-    getProjects(1);
-  }, []);
+  const [pageIndex, setPageIndex] = useState(1);
+  const { mutate } = useSWRConfig();
+  const url = UrlService.projectList + pageIndex;
+  const { data, error } = useSWR(url);
 
   return (
     <Template pageTitle="Project list">
@@ -33,8 +28,34 @@ const Project = () => {
         </Row>
         <Row justify="center">
           <Col span="24">
-            {projects && (
-              <ProjectTable projects={projects} getProjects={getProjects} />
+            {error && <div>Error loading data...</div>}
+            {!data && <Empty />}
+            {data && (
+              <ProjectTable
+                projects={data?.projects}
+                onPaginationChange={(page) => {
+                  setPageIndex(page);
+                  console.log(UrlService.projectList + page);
+                  mutate(UrlService.projectList + page);
+                }}
+              />
+            )}
+          </Col>
+        </Row>
+
+        <Row justify="center">
+          <Col span="24">
+            {error && <div>Error loading data...</div>}
+            {!data && <Empty />}
+            {data && (
+              <ProjectTable
+                projects={data?.projects}
+                onPaginationChange={(page) => {
+                  setPageIndex(page);
+                  console.log(UrlService.projectList + page);
+                  mutate(UrlService.projectList + page);
+                }}
+              />
             )}
           </Col>
         </Row>
