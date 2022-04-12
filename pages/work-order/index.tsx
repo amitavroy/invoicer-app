@@ -10,8 +10,10 @@ import UrlService from "../../services/url.service";
 const WorkOrders = () => {
   const [pageIndex, setPageIndex] = useState(1);
   const url = UrlService.workOrderList + pageIndex;
-  const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(url);
+  const { mutate, fetcher } = useSWRConfig();
+  const { data, error } = useSWR<unknown>(url, fetcher, {
+    revalidateIfStale: false,
+  });
 
   return (
     <Template pageTitle="Work order list">
