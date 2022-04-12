@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@300;400;500;700&display=swap");
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Slab", serif;
+}
+body,
+p,
+ul,
+li,
+a {
+  font-family: "PT Sans", sans-serif;
+}
 .ant-layout.layout {
   height: 100vh;
 }

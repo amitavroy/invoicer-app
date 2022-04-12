@@ -2,9 +2,10 @@ import { Button, Col, Empty, Row, Space } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
+
 import WorkOrderTable from "../../components/tables/work-order.table";
 import Template from "../../components/template";
-import UrlService from "../../services/ur.service";
+import UrlService from "../../services/url.service";
 
 const WorkOrders = () => {
   const [pageIndex, setPageIndex] = useState(1);
@@ -18,7 +19,7 @@ const WorkOrders = () => {
         <Row justify="space-between">
           <Col span="20"></Col>
           <Col span="4" style={{ textAlign: "end" }}>
-            <Link href="project/add">
+            <Link href="work-order/add">
               <Button type="primary" htmlType="button" icon=" ">
                 Add work order
               </Button>

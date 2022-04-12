@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
 import ProjectTable from "../../components/tables/project.table";
-import WorkOrderTable from "../../components/tables/work-order.table";
 import Template from "../../components/template";
-import UrlService from "../../services/ur.service";
+import UrlService from "../../services/url.service";
 
 const Project = () => {
   const [pageIndex, setPageIndex] = useState(1);
