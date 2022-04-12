@@ -1,3 +1,6 @@
+.ant-layout.layout {
+  height: 100vh;
+}
 .page-title {
   margin: 20px 0;
 }
