@@ -25,3 +25,6 @@ a {
   padding: 24px;
   background: #fff;
 }
+.ant-table-thead .ant-table-cell {
+  font-weight: bold;
+}
