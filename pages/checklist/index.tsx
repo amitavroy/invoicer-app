@@ -17,9 +17,9 @@ const ChecklistPage = () => {
         <Row justify="space-between">
           <Col span="20"></Col>
           <Col span="4" style={{ textAlign: "end" }}>
-            <Link href="project/add">
-              <Button type="default" htmlType="button" icon=" ">
-                Add project
+            <Link href="checklist/add">
+              <Button type="primary" htmlType="button" icon=" ">
+                Add checklist
               </Button>
             </Link>
           </Col>
@@ -32,10 +32,7 @@ const ChecklistPage = () => {
             {data && (
               <ChecklistTable
                 checklists={data?.checklists}
-                onPaginationChange={(page) => {
-                  console.log(page);
-                  setPageIndex(page);
-                }}
+                onPaginationChange={(page) => setPageIndex(page)}
               />
             )}
           </Col>

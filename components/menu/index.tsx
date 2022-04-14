@@ -17,6 +17,11 @@ const MainMenu = () => {
           <a>Work orders</a>
         </Link>
       </Menu.Item>
+      <Menu.Item key={3} onClick={(event) => setCurrentMenu(event.key)}>
+        <Link href={"/checklist"}>
+          <a>Checklists</a>
+        </Link>
+      </Menu.Item>
     </Menu>
   );
 };

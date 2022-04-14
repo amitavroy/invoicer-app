@@ -1,4 +1,5 @@
 import { Pagination, Space, Table } from "antd";
+import React from "react";
 import { ChecklistPageData } from "../../interfaces/checklist-data.interface";
 
 interface Props {
@@ -6,7 +7,10 @@ interface Props {
   onPaginationChange: (page: number) => void;
 }
 
-const ChecklistTable = ({ checklists, onPaginationChange }) => {
+const ChecklistTable: React.FC<Props> = ({
+  checklists,
+  onPaginationChange,
+}) => {
   const columns = [
     { title: "Title", dataIndex: "title", key: "title" },
     { title: "Description", dataIndex: "description", key: "description" },

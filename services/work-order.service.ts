@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import HttpService from "./http.service";
 import UrlService from "./url.service";
 
@@ -10,7 +11,9 @@ interface WorkOrderPayload {
 }
 
 class WorkOrderService {
-  public static async saveWorkOrder(data: WorkOrderPayload) {
+  public static async saveWorkOrder(
+    data: WorkOrderPayload
+  ): Promise<AxiosResponse> {
     return await HttpService.post(UrlService.workOrderCreate, data);
   }
 }

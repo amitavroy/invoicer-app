@@ -20,7 +20,7 @@ const Project = () => {
           <Col span="20"></Col>
           <Col span="4" style={{ textAlign: "end" }}>
             <Link href="project/add">
-              <Button type="default" htmlType="button" icon=" ">
+              <Button type="primary" htmlType="button" icon=" ">
                 Add project
               </Button>
             </Link>
@@ -33,11 +33,7 @@ const Project = () => {
             {data && (
               <ProjectTable
                 projects={data?.projects}
-                onPaginationChange={(page) => {
-                  setPageIndex(page);
-                  console.log(UrlService.projectList + page);
-                  mutate(UrlService.projectList + page);
-                }}
+                onPaginationChange={(page) => setPageIndex(page)}
               />
             )}
           </Col>

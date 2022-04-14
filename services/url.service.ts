@@ -9,6 +9,7 @@ class UrlService {
   public static workOrderDetails: string = this.baseUrl + "wo/view/";
 
   public static checklistList: string = this.baseUrl + "checklist/list?page=";
+  public static checklistCreate: string = this.baseUrl + "checklist/create";
 }
 
 export default UrlService;
