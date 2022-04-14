@@ -9,14 +9,13 @@ const WorkOrderDetails = () => {
   const router = useRouter();
   const { query } = router;
   const { fetcher } = useSWRConfig();
-  const { data, error } = useSWR(
+  const { data, error } = useSWR<any>(
     UrlService.workOrderDetails + query.gid,
     fetcher,
     {
       revalidateIfStale: false,
     }
   );
-  console.log("data", data);
   return (
     <Template pageTitle="Work order details">
       <div className="site-page-header-ghost-wrapper">
