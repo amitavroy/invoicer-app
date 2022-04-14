@@ -1,4 +1,4 @@
-import { Col, Descriptions, PageHeader, Row, Space } from "antd";
+import { Col, Descriptions, List, PageHeader, Row, Space } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
@@ -36,7 +36,22 @@ const ChecklistDetails: React.FC<Props> = ({ checklist }) => {
       <Content style={{ marginTop: "20px" }}>
         <Row>
           <Col span={12}>Left</Col>
-          <Col span={12}>Right</Col>
+          <Col span={12}>
+            <List
+              bordered
+              dataSource={checklist.items}
+              renderItem={(item) => (
+                <List.Item>
+                  <List.Item.Meta
+                    title={item.item}
+                    description={`Mandatory: ${
+                      item.is_mandatory ? "Yes" : "No"
+                    }`}
+                  />
+                </List.Item>
+              )}
+            ></List>
+          </Col>
         </Row>
       </Content>
     </Template>
@@ -46,7 +61,6 @@ const ChecklistDetails: React.FC<Props> = ({ checklist }) => {
 export default ChecklistDetails;
 
 export async function getServerSideProps(context) {
-  console.log(context.params);
   const resp: AxiosResponse<{ checklist: Checklist; success: boolean }> =
     await HttpService.get(UrlService.checklistDetails + context.params.gid);
   return {
