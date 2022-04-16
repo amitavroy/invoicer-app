@@ -11,6 +11,9 @@ class UrlService {
   public static checklistList: string = this.baseUrl + "checklist/list?page=";
   public static checklistCreate: string = this.baseUrl + "checklist/create";
   public static checklistDetails: string = this.baseUrl + "checklist/view/";
+
+  public static checklistItemCreate: string =
+    this.baseUrl + "checklist/item/create";
 }
 
 export default UrlService;

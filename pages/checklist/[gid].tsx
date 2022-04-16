@@ -3,6 +3,7 @@ import { Content } from "antd/lib/layout/layout";
 import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import React, { FC } from "react";
+import ChecklistItemAddForm from "../../components/forms/checklist-item-add.form";
 
 import Template from "../../components/template";
 import { Checklist } from "../../interfaces/models/checklist.interface";
@@ -34,8 +35,11 @@ const ChecklistDetails: React.FC<Props> = ({ checklist }) => {
         </PageHeader>
       </div>
       <Content style={{ marginTop: "20px" }}>
-        <Row>
-          <Col span={12}>Left</Col>
+        <Row justify="start">
+          <Col span={12}>
+            <ChecklistItemAddForm checklistId={router.query.gid} />
+          </Col>
+
           <Col span={12}>
             <List
               bordered

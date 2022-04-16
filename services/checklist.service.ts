@@ -13,6 +13,12 @@ class ChecklistService {
   ): Promise<AxiosResponse> {
     return await HttpService.post(UrlService.checklistCreate, data);
   }
+
+  public static async saveChecklistItem(
+    data: ChecklistPayload
+  ): Promise<AxiosResponse> {
+    return await HttpService.post(UrlService.checklistItemCreate, data);
+  }
 }
 
 export default ChecklistService;

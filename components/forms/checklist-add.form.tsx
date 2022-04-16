@@ -8,14 +8,14 @@ const ChecklistAddForm = () => {
 
   const handleOnFinish = async (values: any) => {
     const resp = await ChecklistService.saveProject(values);
-    resp.status === 201 && router.push("/checklist");
+    resp?.status === 201 && router.push("/checklist");
   };
   const handleOnFinishFailed = (errorInfo: any) => {
     console.log("Error", errorInfo);
   };
   return (
     <Form
-      name="projectadd"
+      name="checklistadd"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 8 }}
       onFinish={handleOnFinish}
